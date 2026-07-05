@@ -11,9 +11,9 @@ Use:
 - `camelCase` for variables and functions
 
 Prefer:
-- Separation of routes, controllers, and models
-- JWT for stateless authentication
-- Joi or custom validation utilities (see `server/utilities/validation.js`)
+- Separation of routes, controllers, services/utilities, and models
+- Stateless authentication and explicit authorization rules where needed
+- Centralized validation utilities for request payloads
 
 ## React
 
@@ -21,11 +21,11 @@ Use:
 - Functional components with Hooks
 - `PascalCase` for component names
 - Descriptive prop names
-- React Router for client-side navigation
+- React Router for client-side navigation in SPA projects
 
 Prefer:
 - Reusable UI components in `src/components/`
-- Context API or state management only when necessary
+- Local state first, then context/global state when justified
 - Semantic HTML within JSX
 
 ## SCSS

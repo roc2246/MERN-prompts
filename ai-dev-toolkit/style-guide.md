@@ -2,7 +2,7 @@
 
 ## General Style
 
-This application should look clean, professional, and employer-presentable.
+The application should look clean, professional, and consistent.
 
 Prioritize:
 - Readability
@@ -48,3 +48,25 @@ Preferred spacing scale:
 2rem
 3rem
 4rem
+```
+
+## Typography
+
+Use:
+- Consistent heading hierarchy (`h1` to `h6`)
+- Readable line-height (around `1.4` to `1.7`)
+- Clear body text size (usually `1rem` minimum)
+- Strong contrast between text and background
+
+Avoid:
+- Decorative fonts for body text
+- Inconsistent font sizing between similar components
+
+## Component Styling
+
+Prefer:
+- Component-scoped partials/files
+- Predictable class naming (for example BEM or a simple variant)
+- Shared utility variables and mixins for spacing, colors, and breakpoints
+
+Keep selectors shallow and maintainable.

@@ -9,32 +9,32 @@ Always write application code that is:
 - Accessible
 
 ## Backend (Node.js & Express)
-- **RESTful Design**: Use consistent resource naming and proper HTTP verbs (GET, POST, PUT, DELETE).
-- **Security & RBAC**: Use JWT for stateless authentication. Implement Role-Based Access Control (Admin, Instructor, Student) to protect sensitive lesson and user data.
-- **Sanitization**: Sanitize user input to prevent NoSQL injection and Cross-Site Scripting (XSS).
+- **RESTful Design**: Use consistent resource naming and proper HTTP verbs (GET, POST, PUT, DELETE, PATCH where appropriate).
+- **Authentication & Authorization**: Use a clear auth strategy (for example JWT) and enforce role/permission checks where required.
+- **Sanitization**: Sanitize user input to reduce NoSQL injection and Cross-Site Scripting (XSS) risks.
 - **Validation**: Validate all incoming request data (body, query, params) using centralized utilities.
-- **Error Handling**: Use centralized error-handling middleware to ensure consistent JSON responses and avoid leaking stack traces.
-- **Statelessness**: Ensure the API remains stateless by relying on tokens rather than server-side sessions.
+- **Error Handling**: Use centralized error-handling middleware for consistent responses without leaking internals.
+- **Statelessness**: Keep APIs stateless unless there is a clear reason not to.
 
 ## Database (MongoDB & Mongoose)
-- **Schema Integrity**: Define strict Mongoose schemas with clear validation and type constraints.
-- **Indexing**: Index fields frequently used in search/filter operations (e.g., student emails or lesson dates).
-- **Lean Queries**: Use `.lean()` for read-only operations to improve performance by bypassing Mongoose document hydration.
-- **Middleware**: Utilize Mongoose `pre` and `post` hooks for tasks like password hashing.
-- **Date Management**: Store all lesson timestamps in UTC to ensure scheduling consistency across different time zones.
+- **Schema Integrity**: Define strict schemas with explicit validation and type constraints.
+- **Indexing**: Index fields frequently used in search/filter/sort operations.
+- **Lean Queries**: Use `.lean()` for read-only operations where document methods are unnecessary.
+- **Middleware**: Use Mongoose hooks only when they improve correctness and maintainability.
+- **Date Management**: Store timestamps in UTC to keep behavior consistent across time zones.
 
 ## Frontend (React)
-- **Component Architecture**: Use functional components with modern Hooks (`useState`, `useEffect`, `useContext`).
-- **State Management**: Keep state local where possible; use Context API for global state like authentication.
-- **Performance**: Use `React.memo`, `useMemo`, and `useCallback` to prevent unnecessary re-renders in complex UI elements like calendars.
-- **Accessibility (A11y)**: Use semantic HTML and provide ARIA labels for interactive elements (e.g., booking buttons, forms).
+- **Component Architecture**: Use functional components with modern Hooks.
+- **State Management**: Keep state local by default; promote to shared state only when needed.
+- **Performance**: Use memoization (`React.memo`, `useMemo`, `useCallback`) for measurable bottlenecks.
+- **Accessibility (A11y)**: Use semantic HTML, labels, and keyboard-accessible interactions.
 
 ## UI & Styling (SCSS)
-- **Mobile-First**: Write styles for mobile views first, using media queries for larger screen enhancements.
-- **Architecture**: Use a structured naming convention (like BEM) and component-based partials.
-- **Consistency**: Use `rem` units and a defined spacing scale to ensure layout rhythm.
+- **Mobile-First**: Start with small screens, then enhance for larger breakpoints.
+- **Architecture**: Use a consistent naming convention and component-oriented structure.
+- **Consistency**: Use `rem` units and a spacing scale to maintain visual rhythm.
 
-## Employer Readiness
-- **Professionalism**: Prioritize code readability and clear separation of concerns over condensed "clever" logic.
-- **Documentation**: Use JSDoc for complex logic and keep README files updated with setup instructions.
-- **Reliability**: Ensure graceful failure states for both the API and the UI components.
+## Production Readiness
+- **Professionalism**: Prioritize clarity and separation of concerns over clever shortcuts.
+- **Documentation**: Document setup, architecture decisions, and non-obvious logic.
+- **Reliability**: Design clear error states and graceful fallback behavior in both API and UI.

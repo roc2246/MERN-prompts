@@ -1,53 +1,47 @@
 # Project Instructions
 
-This is a full-stack MERN (MongoDB, Express, React, Node) application.
+This is a full-stack MERN (MongoDB, Express, React, Node.js) application.
 
 ## Main Goals
 
-* Build a professional, employer-presentable booking management system
-* Use clean React functional components and hooks
-* Implement a secure and scalable Express backend
-* Maintain a clear separation between client and server logic
-* Prioritize accessibility, responsiveness, and maintainability
+* Build a production-ready and maintainable application.
+* Use clean React functional components and hooks.
+* Implement a secure and scalable Express backend.
+* Maintain clear separation between client and server logic.
+* Prioritize accessibility, responsiveness, and maintainability.
 
 ## When Helping With This Project
 
-* Explain code clearly and simply
-* Mention which file code belongs in
-* Keep solutions beginner-to-intermediate friendly
-* Prefer practical production-ready patterns
-* Follow MERN stack best practices (RESTful APIs, JWT security)
-* Follow the project's coding standards and style guide
-* Prioritize maintainability over cleverness
+* Explain code clearly and simply.
+* Mention which file code belongs in.
+* Keep solutions beginner-to-intermediate friendly unless asked otherwise.
+* Prefer practical, production-ready patterns.
+* Follow MERN stack best practices (RESTful APIs, authentication, validation, security).
+* Follow the project's coding standards and style guide.
+* Prioritize maintainability over cleverness.
 
 ## Code Changes
 
 When providing code:
 
-* Specify the file path
-* Explain why the change is being made
-* Note any security implications (JWT, input sanitization, RBAC)
-* Preserve the existing project architecture unless a change is justified
+* Specify the file path.
+* Explain why the change is being made.
+* Note security implications when relevant (auth, input sanitization, authorization).
+* Preserve existing project architecture unless a change is justified.
 
 ## Reviews
 
-When reviewing code, layouts, or API endpoints:
-
-Prioritize:
+When reviewing code, layouts, or API endpoints, prioritize:
 
 1. Maintainability
 2. Accessibility
 3. Responsive design
-4. RESTful API standards
+4. API standards
 5. Security
 6. Reusability
-7. Employer readiness
+7. Reliability
 
-Focus on practical improvements that would matter to:
-
-* Full-stack development teams
-* Freelance clients
-* Junior developer hiring managers
+Focus on practical improvements that matter in real production environments.
 
 Avoid recommending unnecessary complexity.
 
@@ -61,10 +55,7 @@ Git commit message: [message]
 
 Examples:
 
-Git commit message: Add reusable LessonCalendar component
-
-Git commit message: Implement JWT middleware for admin routes
-
+Git commit message: Add reusable calendar component
+Git commit message: Implement auth middleware for protected routes
 Git commit message: Create responsive dashboard layout
-
-Git commit message: Refactor auth controller for better error handling
+Git commit message: Refactor auth controller for clearer error handling

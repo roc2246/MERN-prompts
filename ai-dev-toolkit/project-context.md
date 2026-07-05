@@ -1,21 +1,20 @@
 # Project Context
 
-Project: Ski Lessons Scheduler
+Project Type: Generic MERN Application
 
 Purpose:
-A full-stack MERN application for managing ski lesson bookings, featuring 
-administrative dashboards, instructor interfaces, and student registration.
+A reusable baseline context for full-stack MERN applications, adaptable to products such as dashboards, booking systems, marketplaces, internal tools, or content platforms.
 
 Current Goals:
-- Implement secure JWT-based authentication and role-based access control.
-- Build a responsive React frontend with a functional lesson calendar.
-- Develop a robust Node.js/Express API with MongoDB/Mongoose models.
+- Implement secure authentication and authorization flows.
+- Build a responsive React frontend with reusable components.
+- Develop a robust Node.js/Express API backed by MongoDB/Mongoose.
 - Maintain high code quality with centralized validation and error handling.
-- Ensure the application is portfolio-ready and employer-presentable.
+- Keep architecture and documentation clear for long-term maintenance.
 
 Primary Technologies:
-- React (Vite)
+- React (commonly Vite or Next.js where applicable)
 - Node.js & Express
 - MongoDB (Mongoose)
-- JSON Web Tokens (JWT)
-- SCSS
+- Authentication strategy (for example JWT)
+- SCSS or CSS Modules

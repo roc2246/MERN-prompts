@@ -2,7 +2,7 @@
 
 ## Required Project Context
 
-IMPORTANT: This prompt requires the content of all markdown standards files in the parent .ai directory.
+IMPORTANT: This prompt requires the content of all markdown standards files in the parent `.ai` directory.
 
 Required files:
 - @.ai/architecture.md
@@ -14,17 +14,10 @@ Required files:
 - @.ai/style-guide.md
 
 AI VERIFICATION STEP: Before continuing, verify these files are present in context. If any are missing, STOP and ask the user to provide them.
+
 ## Context
 
-This is a professional portfolio project intended to demonstrate readiness for:
-
-* Junior Web Developer roles
-* Front-End Developer roles
-* Full-Stack Developer roles
-* Agency overflow work
-* Freelance web development work
-
-Documentation should help another developer quickly understand:
+This is a MERN project where documentation should help developers quickly understand:
 
 * What the project does
 * How it is structured
@@ -51,7 +44,7 @@ Review:
 * JSDoc comments
 * Function documentation
 * Component documentation
-* API documentation (REST endpoints, Request/Response schemas)
+* API documentation (REST endpoints, request/response schemas)
 * SCSS documentation
 * Architecture documentation
 * Installation instructions
@@ -88,14 +81,14 @@ Check for:
 
 ---
 
-### Employer Readiness
+### Maintainability & Onboarding
 
 Determine whether documentation would help:
 
-* A hiring manager
-* A full-stack development team
-* A freelance client
-* Another developer maintaining the project
+* New contributors
+* Product engineers
+* QA or support engineers
+* Future maintainers
 
 ---
 
@@ -123,30 +116,30 @@ Provide revised documentation where appropriate.
 
 ### 6. README Improvements
 
-Identify improvements that would make the project more employer-ready.
+Identify improvements that would make the project easier to understand and maintain.
 
 ### 7. Architecture Documentation Improvements
 
 Identify anything that should be documented about:
 
-* Frontend (React/Vite) vs Backend (Node/Express) structure
+* Frontend (React) vs Backend (Node/Express) structure
 * Components
-* API/Controllers
-* Middleware logic (Auth, Validation, UTC Date handling)
+* API/controllers
+* Middleware logic (auth, validation, date/time handling)
 * SCSS architecture
 * Build process
 
-### 8. Employer Impression
+### 8. Documentation Quality Verdict
 
 Would the current documentation make this project appear:
 
-* Professional
+* Clear
 * Maintainable
-* Agency-ready
+* Production-ready
 
 Explain why.
 
-### 9. Highest Impact Documentation Improvement
+### 9. Highest-Impact Documentation Improvement
 
 If only one documentation task could be completed, what should it be and why?
 
@@ -169,7 +162,7 @@ Avoid:
 * Excessive documentation
 * Documentation that becomes difficult to maintain
 
-Focus on documentation that improves maintainability, onboarding, and employer perception.
+Focus on documentation that improves maintainability and onboarding.
 
 ---
 
@@ -178,4 +171,3 @@ Focus on documentation that improves maintainability, onboarding, and employer p
 If documentation changes are recommended, always provide:
 
 Git commit message: [message]
-

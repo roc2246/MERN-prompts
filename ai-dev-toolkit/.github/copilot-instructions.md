@@ -1,6 +1,6 @@
 # Project Instructions
 
-This project uses the @.ai/` directory as the single source of truth.
+This project uses the `@.ai/` directory as the single source of truth.
 
 Follow the documentation in:
 
@@ -9,4 +9,4 @@ Follow the documentation in:
 * @.ai/coding-standards.md
 * @.ai/style-guide.md
 * @.ai/mern-best-practices.md
-* @.ai/employer-review-checklist.md
+* @.ai/architecture.md

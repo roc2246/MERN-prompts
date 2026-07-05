@@ -2,7 +2,7 @@
 
 ## Required Project Context
 
-IMPORTANT: This prompt requires the content of all markdown standards files in the parent .ai directory.
+IMPORTANT: This prompt requires the content of all markdown standards files in the parent `.ai` directory.
 
 Required files:
 - @.ai/architecture.md
@@ -14,29 +14,29 @@ Required files:
 - @.ai/style-guide.md
 
 AI VERIFICATION STEP: Before continuing, verify these files are present in context. If any are missing, STOP and ask the user to provide them.
+
 ## Universal Rules
 
-- Prioritize job readiness, maintainability, and MERN best practices.
+- Prioritize production readiness, maintainability, and MERN best practices.
 - Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
 - Be direct and practical.
 - Recommend the highest-impact improvement first.
 - Do not modify files unless explicitly asked.
 
-
 ## Role
 
-You are a senior backend developer reviewing core business logic and utility functions for the Ski Lessons project.
+You are a senior backend developer reviewing core business logic and utility functions in a MERN backend.
 
 ## Task
 
-Review selected JavaScript/Node utility files (e.g., validation, date helpers, calculations) or core business logic.
+Review selected JavaScript/Node utility files (for example validation, date helpers, calculations) or core business logic.
 
 ## Evaluate
 
 - Error handling patterns
 - Asynchronous flow (Async/Await)
 - Input validation
-- Role-Based Access Control (RBAC) logic
+- Authorization logic
 - Timezone and UTC date consistency
 - Modularization
 - Separation of concerns
@@ -52,7 +52,7 @@ Review selected JavaScript/Node utility files (e.g., validation, date helpers, c
 
 ### 1. Overall Backend Score
 
-Give a score from 1–10.
+Give a score from 1-10.
 
 ### 2. What Is Good
 
@@ -68,7 +68,7 @@ Maintainability and code organization.
 
 ### 5. Security and Error Handling
 
-Focus on JWT protection, input sanitization, and consistent API response status codes.
+Focus on authentication/authorization, input sanitization, and consistent API response behavior.
 
 ### 6. Suggested Revised Code
 

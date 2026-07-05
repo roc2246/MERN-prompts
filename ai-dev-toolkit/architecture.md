@@ -2,68 +2,54 @@
 
 ## System Overview
 
-Ski Lessons Scheduler is a full-stack MERN application with a React/Vite frontend and a Node/Express/Mongo backend.
+This toolkit targets a generic full-stack MERN application with a React frontend and a Node/Express/MongoDB backend.
 
-- Frontend responsibilities: UI rendering, route navigation, calendar interactions, token storage.
-- Backend responsibilities: authentication, RBAC, validation, business logic, data persistence.
+- Frontend responsibilities: UI rendering, route navigation, state handling, and API integration.
+- Backend responsibilities: authentication/authorization, validation, business logic, and data persistence.
 
 ## Runtime Architecture
 
 ### Frontend (`client/`)
 
-- `src/pages/`: route-level screens (login, register, admin home, instructor, lesson board).
+- `src/pages/`: route-level screens.
 - `src/components/`: reusable UI components.
-- `src/components/calendar-dir/`: calendar display and day/date rendering modules.
-- `src/utils/`: API wrappers and calendar/business helpers.
-- `src/scss/` and `src/styles/`: global and component styling.
+- `src/utils/`: API wrappers and shared helpers.
+- `src/scss/` or `src/styles/`: global and component styling.
 
 ### Backend (`server/`)
 
 - `routes/`: endpoint declarations and middleware composition.
-- `middleware/`: auth (`authenticate`, `requireAdmin`) and input validation.
+- `middleware/`: auth, validation, and cross-cutting concerns.
 - `controllers/`: HTTP request/response orchestration.
-- `models/`: database operations and business constraints.
-- `utilities/`: shared validation, schema definitions, error shaping, model helpers.
-- `scripts/`: one-off operational scripts (data migration).
+- `models/`: Mongoose schemas and data access logic.
+- `utilities/` or `services/`: shared helpers and domain logic.
+- `scripts/`: operational scripts (seeding, migrations, maintenance).
 
 ## Request Lifecycle
 
-1. Route match in `server/routes/index.js`.
-2. Middleware chain executes:
-	- Auth and token revocation check where required.
-	- Role check for admin-only actions.
-	- Request payload validation.
+1. Route match in the backend routing layer.
+2. Middleware chain executes (auth, authorization, validation, sanitization).
 3. Controller handles endpoint-level workflow.
-4. Model layer performs Mongoose operations.
-5. JSON response returned to frontend.
+4. Model/service layer performs database operations.
+5. JSON response is returned to the frontend.
 
 ## Security Architecture
 
-- Stateless JWT auth via `Authorization: Bearer <token>`.
-- Persistent token revocation with `BlacklistedToken` collection and TTL expiration.
-- Role-based authorization using `requireAdmin` middleware.
+- Stateless JWT auth via `Authorization: Bearer <token>` when token auth is used.
+- Role-based authorization middleware for protected operations.
 - Route-level request validation before business logic execution.
+- Input sanitization and safe error handling to prevent data leakage.
 
 ## Data Architecture
 
-### User
-- `username` (unique, indexed)
-- `password` (hashed)
-- `admin` (boolean)
-
-### Lesson
-- `type`
-- `date` (UTC `Date`)
-- `timeLength`
-- `guests`
-- `assignedTo` (`ObjectId` reference or `null`)
-
-### BlacklistedToken
-- `token` (unique)
-- `expiresAt` (TTL)
+Use explicit, validated schemas for each domain entity, with:
+- Required fields and type constraints
+- Indexes for common query patterns
+- Secure handling of sensitive fields (for example, password hashing)
+- UTC date storage for cross-timezone consistency
 
 ## Operational Notes
 
-- Production serves frontend build from backend `server/index.js`.
-- Legacy data migration script: `server/scripts/migrate-lessons.js`.
-- Keep API contracts and README synchronized whenever routes, middleware, or schemas change.
+- Keep API contracts and project documentation synchronized when routes, schemas, or middleware change.
+- Prefer clear separation of concerns across route, controller, service, and model layers.
+- Document environment variables and startup flows for both client and server.

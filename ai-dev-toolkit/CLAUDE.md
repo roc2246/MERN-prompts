@@ -1,6 +1,6 @@
 # Claude Project Instructions
 
-This project uses the @.ai/` directory as the single source of truth for project documentation, architecture, coding standards, style guidelines, and prompts.
+This project uses the `@.ai/` directory as the single source of truth for project documentation, architecture, coding standards, style guidelines, and prompts.
 
 Follow the documentation in:
 
