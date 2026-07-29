@@ -20,7 +20,7 @@ Use this toolkit if you are:
 ## Repository Structure
 
 ```text
-ai-dev-toolkit/
+MERN-prompts/
   architecture.md
   CLAUDE.md
   coding-standards.md
@@ -28,6 +28,7 @@ ai-dev-toolkit/
   project-context.md
   project-instructions.md
   style-guide.md
+  README.md
   .github/
     copilot-instructions.md
   prompts/
@@ -40,32 +41,33 @@ ai-dev-toolkit/
     explain-code.prompt.md
     layout-ux-review.prompt.md
     scss-review.prompt.md
+    test-coverage-audit-and-generation.prompt.md
 ```
 
 ## What Each Core File Does
 
-### `ai-dev-toolkit/project-context.md`
+### `project-context.md`
 Defines the baseline context for a generic MERN application, goals, and technology assumptions.
 
-### `ai-dev-toolkit/project-instructions.md`
+### `project-instructions.md`
 Defines assistant behavior for implementation, code changes, reviews, and commit message expectations.
 
-### `ai-dev-toolkit/coding-standards.md`
+### `coding-standards.md`
 Language and framework conventions for JavaScript, Node/Express, React, and SCSS.
 
-### `ai-dev-toolkit/style-guide.md`
+### `style-guide.md`
 UI and layout standards covering responsiveness, typography, spacing, and component styling.
 
-### `ai-dev-toolkit/architecture.md`
+### `architecture.md`
 Reference architecture for common MERN folder structure, lifecycle, and separation of concerns.
 
-### `ai-dev-toolkit/mern-best-practices.md`
+### `mern-best-practices.md`
 Cross-cutting best practices for security, maintainability, performance, and production readiness.
 
-### `ai-dev-toolkit/CLAUDE.md`
+### `CLAUDE.md`
 Instruction entrypoint for assistants that support a Claude-style instruction file.
 
-### `ai-dev-toolkit/.github/copilot-instructions.md`
+### `.github/copilot-instructions.md`
 Instruction entrypoint for GitHub Copilot Chat / coding workflows.
 
 ## Prompt Templates (Task Catalog)
@@ -93,6 +95,8 @@ Instruction entrypoint for GitHub Copilot Chat / coding workflows.
   - Audits docs and suggests high-value updates.
 - `explain-code.prompt.md`
   - Explains selected code with maintainability guidance.
+- `test-coverage-audit-and-generation.prompt.md`
+  - Audits existing test coverage and generates missing tests.
 
 ## How To Use This Toolkit
 
@@ -109,13 +113,13 @@ Map these files into that folder (or keep this repository as a reference and cop
 Example target structure:
 
 ```text
-<your-project>/.ai/project-context.md
-<your-project>/.ai/project-instructions.md
-<your-project>/.ai/coding-standards.md
-<your-project>/.ai/style-guide.md
-<your-project>/.ai/architecture.md
-<your-project>/.ai/mern-best-practices.md
-<your-project>/.ai/CLAUDE.md
+<your-project>/@.ai/project-context.md
+<your-project>/@.ai/project-instructions.md
+<your-project>/@.ai/coding-standards.md
+<your-project>/@.ai/style-guide.md
+<your-project>/@.ai/architecture.md
+<your-project>/@.ai/mern-best-practices.md
+<your-project>/@.ai/CLAUDE.md
 ```
 
 ## 2. Ensure assistant instruction discovery
@@ -124,7 +128,7 @@ For GitHub Copilot workflows, ensure your project includes:
 - `.github/copilot-instructions.md`
 
 For other assistants, point them to:
-- `.ai/CLAUDE.md` (or equivalent instruction source)
+- `@.ai/CLAUDE.md` (or equivalent instruction source)
 
 ## 3. Use prompts with relevant code context
 
@@ -158,7 +162,7 @@ Use these as quick copy templates in your AI chat tool.
 ### Example: Backend route review
 
 ```text
-Use ai-dev-toolkit/prompts/api-controller-route-review.prompt.md.
+Use prompts/api-controller-route-review.prompt.md.
 Review server/routes and server/controllers only.
 Focus on authentication, validation, status codes, and middleware order.
 Return critical issues first with file-specific fixes.
@@ -167,7 +171,7 @@ Return critical issues first with file-specific fixes.
 ### Example: Build component
 
 ```text
-Use ai-dev-toolkit/prompts/build-component.prompt.md.
+Use prompts/build-component.prompt.md.
 Create a reusable UserCard component from this existing JSX.
 Target folder: client/src/components/cards.
 Include matching SCSS and a usage example.
@@ -176,9 +180,17 @@ Include matching SCSS and a usage example.
 ### Example: Documentation audit
 
 ```text
-Use ai-dev-toolkit/prompts/documentation-review-and-update.prompt.md.
+Use prompts/documentation-review-and-update.prompt.md.
 Review README, server README, and API docs.
 Propose only high-impact updates that reduce onboarding time.
+```
+
+### Example: Test coverage audit
+
+```text
+Use prompts/test-coverage-audit-and-generation.prompt.md.
+Audit test coverage for server/services and client/src/hooks.
+Generate missing unit tests and flag untested edge cases.
 ```
 
 ## Quality Principles Built Into This Toolkit
@@ -195,6 +207,7 @@ You can tailor the toolkit by editing:
 - `project-context.md` for domain details.
 - `architecture.md` for your real folder structure and service boundaries.
 - `style-guide.md` for design-system tokens and conventions.
+- `coding-standards.md` for language and framework conventions specific to your stack.
 - Prompt templates to include project-specific checklists.
 
 Keep customizations minimal and explicit to preserve portability.
