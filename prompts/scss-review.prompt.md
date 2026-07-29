@@ -20,10 +20,10 @@ AI VERIFICATION STEP: Before continuing, verify these files are present in conte
 - Prioritize maintainability, accessibility, responsive design, and predictable compiled CSS.
 - Avoid overengineering, unnecessary abstractions, and large visual redesigns.
 - Preserve the current appearance and behavior unless fixing a confirmed defect.
-- Make safe improvements directly in the files. Do not only recommend changes.
+- During Phase 1, recommend safe improvements without editing files. Apply them only after explicit user approval.
 - Do not claim a file was reviewed or changed unless it was actually opened and inspected.
 - Do not use deep nesting merely because SCSS supports it.
-- Recommend and apply the highest-impact improvements first.
+- Recommend the highest-impact improvements first; apply them only after approval.
 
 ## Role
 
@@ -31,7 +31,7 @@ You are a senior front-end developer performing a complete SCSS and CSS architec
 
 ## Primary Task
 
-Recursively find, review, and safely refactor all handwritten stylesheet code in the provided project.
+Recursively find and review all handwritten stylesheet code in the provided project, then propose safe refactors for approval before editing.
 
 Search every nested directory for:
 
@@ -56,11 +56,11 @@ Before editing, create a complete stylesheet inventory. Review every discovered 
 
 ## Required Refactoring Behavior
 
-Apply safe, behavior-preserving improvements directly to the project.
+During Phase 1, propose safe, behavior-preserving improvements. Apply them to the project only after explicit approval.
 
 This includes converting plain CSS-style repetition into idiomatic SCSS when the relationship is clear.
 
-For example, refactor this:
+For example, recommend this refactor during Phase 1:
 
 ```scss
 .git {
@@ -112,10 +112,10 @@ Do not force nesting when:
 Also find and refactor:
 
 - Repeated parent selectors that can safely use `&`.
-- For every stylesheet, actively identify repeated patterns that can be safely converted into SCSS variables, maps, mixins, functions, placeholders, loops, or reusable partials. Apply the refactor when it removes meaningful duplication, centralizes shared logic, or makes intent clearer.
+- For every stylesheet, actively identify repeated patterns that can be safely converted into SCSS variables, maps, mixins, functions, placeholders, loops, or reusable partials. During Phase 1, propose the refactor when it removes meaningful duplication, centralizes shared logic, or makes intent clearer. Apply it only in Phase 2 after approval.
 - Prefer existing project abstractions before creating new ones. Search the codebase for current variables, maps, mixins, functions, placeholders, and utilities, and reuse or extend them when appropriate.
 - Create a new mixin, function, map, placeholder, loop, or partial only when the pattern is repeated or likely to be maintained as one shared rule. Do not create an abstraction for a one-off declaration or minor repetition when direct CSS is easier to understand.
-- When creating a mixin or function, update all safe matching call sites, remove superseded duplicate code, and document any matching cases intentionally left unchanged.
+- In the Phase 1 proposal, identify all safe matching call sites for any proposed mixin or function. In Phase 2, update those approved call sites, remove superseded duplicate code, and document matching cases intentionally left unchanged.
 - Repeated media queries that can be colocated with the component they modify.
 - Repeated values that should use existing variables, tokens, maps, functions, or mixins.
 - Hard-coded colors, spacing, typography, radii, shadows, and breakpoints that duplicate existing design tokens.
@@ -175,9 +175,9 @@ For every selector considered for removal, renaming, nesting, or consolidation:
 4. Preserve public or dynamically constructed class names unless usage can be verified.
 5. Do not remove a selector merely because a simple text search misses dynamic usage.
 
-## Validation After Changes
+## Validation After Approved Changes
 
-After editing:
+After the user approves and edits are applied:
 
 1. Run the available stylesheet lint command.
 2. Run the frontend type-check when TypeScript is present.
@@ -205,14 +205,15 @@ Do not call the review complete unless every discovered handwritten stylesheet w
 
 ### 1. Overall SCSS Score
 
-Give the final codebase a score from 1-10 after the applied changes.
+In Phase 1, score the current codebase. In Phase 2, provide an updated score after the approved changes are applied.
 
-### 2. Changes Applied
+### 2. Proposed Changes (Phase 1) / Changes Applied (Phase 2)
 
 For every modification, include:
 
 - File path
-- What changed
+- In Phase 1: what would change
+- In Phase 2: what changed
 - Why it is more maintainable or idiomatic SCSS
 - Whether the compiled selector or behavior remained equivalent
 
@@ -246,4 +247,27 @@ Give only the three highest-value remaining tasks in priority order.
 
 ### 8. Commit Message
 
-Provide one concise conventional commit message describing the applied SCSS refactor.
+In Phase 1, provide a proposed conventional commit message. In Phase 2, provide the final commit message describing the applied SCSS refactor.
+---
+
+## Mandatory Approval Gate
+
+Use a two-phase workflow.
+
+### Phase 1: Review and proposal
+
+- Inspect the relevant files and present the findings, recommended changes, affected file paths, expected benefits, risks, and any concise example patches needed to explain the proposal.
+- Do not edit, create, delete, rename, or overwrite project files during Phase 1.
+- Do not run commands that mutate the project during Phase 1. Read-only inspection and validation commands are allowed.
+- Clearly distinguish required fixes from optional improvements.
+
+At the end of Phase 1, stop and ask exactly:
+
+**Would you like me to go forward and apply these changes?**
+
+Do not apply anything until the user explicitly approves.
+
+### Phase 2: Implementation after approval
+
+After the user approves, apply only the approved changes. Then run the relevant type-check, lint, tests, and build commands when available, fix problems caused by the edits, and report every file changed plus the validation results.
+

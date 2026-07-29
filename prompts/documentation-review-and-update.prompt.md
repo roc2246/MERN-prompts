@@ -112,7 +112,7 @@ Identify anything that no longer matches the code.
 
 ### 5. Suggested Documentation Updates
 
-Provide revised documentation where appropriate.
+During Phase 1, provide proposed revisions or concise examples where appropriate. Apply documentation edits only after explicit approval.
 
 ### 6. README Improvements
 
@@ -171,3 +171,26 @@ Focus on documentation that improves maintainability and onboarding.
 If documentation changes are recommended, always provide:
 
 Git commit message: [message]
+---
+
+## Mandatory Approval Gate
+
+Use a two-phase workflow.
+
+### Phase 1: Review and proposal
+
+- Inspect the relevant files and present the findings, recommended changes, affected file paths, expected benefits, risks, and any concise example patches needed to explain the proposal.
+- Do not edit, create, delete, rename, or overwrite project files during Phase 1.
+- Do not run commands that mutate the project during Phase 1. Read-only inspection and validation commands are allowed.
+- Clearly distinguish required fixes from optional improvements.
+
+At the end of Phase 1, stop and ask exactly:
+
+**Would you like me to go forward and apply these changes?**
+
+Do not apply anything until the user explicitly approves.
+
+### Phase 2: Implementation after approval
+
+After the user approves, apply only the approved changes. Then run the relevant type-check, lint, tests, and build commands when available, fix problems caused by the edits, and report every file changed plus the validation results.
+
