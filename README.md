@@ -42,6 +42,7 @@ MERN-prompts/
     layout-ux-review.prompt.md
     scss-review.prompt.md
     test-coverage-audit-and-generation.prompt.md
+    typescript-best-practices-review.prompt.md
 ```
 
 ## What Each Core File Does
@@ -96,7 +97,9 @@ Instruction entrypoint for GitHub Copilot Chat / coding workflows.
 - `explain-code.prompt.md`
   - Explains selected code with maintainability guidance.
 - `test-coverage-audit-and-generation.prompt.md`
-  - Audits existing test coverage and generates missing tests.
+  - Audits existing test coverage and proposes missing tests before generating them.
+- `typescript-best-practices-review.prompt.md`
+  - Recursively audits all handwritten TypeScript and TSX files, proposes idiomatic TypeScript refactors, and applies them only after approval.
 
 ## How To Use This Toolkit
 
@@ -137,23 +140,33 @@ When running a prompt:
 - Include enough surrounding context for imported modules.
 - Keep scope explicit (for example: `server/routes`, `client/src/components/Header`).
 
-## 4. Apply recommendations selectively
+## 4. Review and approve changes
 
-Prompt output should guide engineering decisions, not replace judgment.
-- Prioritize high-impact security and reliability fixes first.
-- Keep architecture changes incremental unless major refactor is planned.
-- Validate behavior with tests or manual verification.
+All implementation-capable prompts use a mandatory two-phase workflow:
+
+1. **Phase 1 — Review and proposal**
+   - The assistant inspects the requested scope.
+   - It reports findings, affected files, priorities, expected benefits, risks, and proposed changes.
+   - It does not edit, create, delete, rename, or overwrite files.
+   - It ends by asking: **Would you like me to go forward and apply these changes?**
+2. **Phase 2 — Implementation after approval**
+   - The assistant applies only the approved changes.
+   - It runs relevant type-check, lint, test, and build commands when available.
+   - It reports every changed file and the validation results.
+
+Prompt output should guide engineering decisions, not replace judgment. Review the proposed changes before approving them. Prioritize high-impact security and reliability fixes, keep architecture changes incremental, and validate behavior after implementation.
 
 ## Suggested Workflow
 
-1. Start with `code-review.prompt.md` or `backend-review.prompt.md` for baseline quality.
+1. Start with `code-review.prompt.md` or `backend-review.prompt.md` for a baseline Phase 1 review.
 2. Use specialized prompts for focused improvements:
    - API and middleware -> `api-controller-route-review.prompt.md`
    - Component work -> `build-component.prompt.md`
    - Styling cleanup -> `scss-review.prompt.md`
    - UX polish -> `layout-ux-review.prompt.md`
-3. Run `documentation-review-and-update.prompt.md` before major merges or release prep.
-4. Use `explain-code.prompt.md` to onboard collaborators quickly.
+3. Review the proposed changes and explicitly approve only the changes you want applied.
+4. Run `documentation-review-and-update.prompt.md` before major merges or release prep.
+5. Use `explain-code.prompt.md` to onboard collaborators quickly.
 
 ## Example Prompt Requests
 
@@ -190,7 +203,7 @@ Propose only high-impact updates that reduce onboarding time.
 ```text
 Use prompts/test-coverage-audit-and-generation.prompt.md.
 Audit test coverage for server/services and client/src/hooks.
-Generate missing unit tests and flag untested edge cases.
+Propose missing unit tests and flag untested edge cases. Do not generate files until I approve the proposal.
 ```
 
 ## Quality Principles Built Into This Toolkit
@@ -244,5 +257,6 @@ Add your preferred license in this repository root (for example, MIT) if you pla
 - [ ] Add `.github/copilot-instructions.md` to your project.
 - [ ] Confirm assistant can read the standards files.
 - [ ] Run a baseline review prompt on one target area.
-- [ ] Apply highest-impact fixes and validate.
+- [ ] Review the Phase 1 proposal and approve the desired changes.
+- [ ] Confirm the assistant reports changed files and validation results after implementation.
 - [ ] Iterate with specialized prompts.
