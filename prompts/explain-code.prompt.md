@@ -2,18 +2,18 @@
 
 ## Required Project Context
 
-IMPORTANT: This prompt requires the content of all markdown standards files in the parent `.ai` directory.
+IMPORTANT: This prompt requires the repository standards files. In this toolkit source repo they live at the repository root. In a consuming project they may live in the project's `.ai/` folder.
 
 Required files:
-- @./architecture.md
-- @./CLAUDE.md
-- @./coding-standards.md
-- @./mern-best-practices.md
-- @./project-context.md
-- @./project-instructions.md
-- @./style-guide.md
+- architecture.md
+- CLAUDE.md
+- coding-standards.md
+- mern-best-practices.md
+- project-context.md
+- project-instructions.md
+- style-guide.md
 
-AI VERIFICATION STEP: Before continuing, verify these files are present in context. If any are missing, STOP and ask the user to provide them.
+AI VERIFICATION STEP: Before continuing, verify these files are present in context. Accept either repository-root copies or `.ai/` copies. If any are missing, identify the missing files and ask the user to provide them.
 
 ## Universal Rules
 
@@ -58,24 +58,10 @@ Support JavaScript and TypeScript code, including React `.jsx` and `.tsx` files.
 ### 6. Best Next Improvement
 ---
 
-## Mandatory Approval Gate
+## Workflow
 
-Use a two-phase workflow.
-
-### Phase 1: Review and proposal
-
-- Inspect the relevant files and present the findings, recommended changes, affected file paths, expected benefits, risks, and any concise example patches needed to explain the proposal.
-- Do not edit, create, delete, rename, or overwrite project files during Phase 1.
-- Do not run commands that mutate the project during Phase 1. Read-only inspection and validation commands are allowed.
-- Clearly distinguish required fixes from optional improvements.
-
-If the explanation includes recommended code changes, at the end of Phase 1 stop and ask exactly:
-
-**Would you like me to go forward and apply these changes?**
-
-Do not apply anything until the user explicitly approves.
-
-### Phase 2: Implementation after approval
-
-After the user approves, apply only the approved changes. Then run the relevant type-check, lint, tests, and build commands when available, fix problems caused by the edits, and report every file changed plus the validation results.
+- Inspect the relevant files and explain them directly.
+- Keep the task read-only unless the user explicitly asks for code changes.
+- If you spot improvements, label them as optional recommendations rather than switching into implementation mode.
+- Only propose an edit plan and request approval if the user later asks you to make code changes.
 

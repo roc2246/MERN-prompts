@@ -2,18 +2,18 @@
 
 ## Required Project Context
 
-IMPORTANT: This prompt requires the content of all markdown standards files in the parent `.ai` directory.
+IMPORTANT: This prompt requires the repository standards files. In this toolkit source repo they live at the repository root. In a consuming project they may live in the project's `.ai/` folder.
 
 Required files:
-- @./architecture.md
-- @./CLAUDE.md
-- @./coding-standards.md
-- @./mern-best-practices.md
-- @./project-context.md
-- @./project-instructions.md
-- @./style-guide.md
+- architecture.md
+- CLAUDE.md
+- coding-standards.md
+- mern-best-practices.md
+- project-context.md
+- project-instructions.md
+- style-guide.md
 
-AI VERIFICATION STEP: Before continuing, verify these files are present in context. If any are missing, STOP and ask the user to provide them.
+AI VERIFICATION STEP: Before continuing, verify these files are present in context. Accept either repository-root copies or `.ai/` copies. If any are missing, identify the missing files and ask the user to provide them.
 
 ## Universal Rules
 
