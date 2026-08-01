@@ -5,13 +5,13 @@
 IMPORTANT: This prompt is designed for the MERN AI Dev Toolkit and requires the project standards stored in the parent `.ai` directory.
 
 Required files:
-- @.ai/architecture.md
-- @.ai/CLAUDE.md
-- @.ai/coding-standards.md
-- @.ai/mern-best-practices.md
-- @.ai/project-context.md
-- @.ai/project-instructions.md
-- @.ai/style-guide.md
+- @./architecture.md
+- @./CLAUDE.md
+- @./coding-standards.md
+- @./mern-best-practices.md
+- @./project-context.md
+- @./project-instructions.md
+- @./style-guide.md
 
 AI VERIFICATION STEP: Before reviewing code, verify that these files are available in context. If any are missing, identify the missing files and stop before giving a score or making code claims.
 

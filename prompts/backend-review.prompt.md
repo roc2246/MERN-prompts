@@ -5,13 +5,13 @@
 IMPORTANT: This prompt requires the content of all markdown standards files in the parent `.ai` directory.
 
 Required files:
-- @.ai/architecture.md
-- @.ai/CLAUDE.md
-- @.ai/coding-standards.md
-- @.ai/mern-best-practices.md
-- @.ai/project-context.md
-- @.ai/project-instructions.md
-- @.ai/style-guide.md
+- @./architecture.md
+- @./CLAUDE.md
+- @./coding-standards.md
+- @./mern-best-practices.md
+- @./project-context.md
+- @./project-instructions.md
+- @./style-guide.md
 
 AI VERIFICATION STEP: Before continuing, verify these files are present in context. If any are missing, STOP and ask the user to provide them.
 
