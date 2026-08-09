@@ -1,6 +1,6 @@
 # Agent Skills Architecture
 
-This toolkit now treats the files in `.agents/skills/` as the primary AI workflow interface. The older `prompts/*.prompt.md` files are retained as detailed reference checklists and backward-compatible prompt templates.
+This toolkit uses `.agents/skills/` as the AI workflow interface. Detailed review criteria live inside each skill under `references/`, so no separate `.prompt.md` files are required.
 
 ## Why this structure
 
@@ -32,6 +32,3 @@ When adding a new workflow:
 - Load project standards selectively. Do not require every standards file for every task.
 - Prefer portable instructions that do not depend on one specific agent product unless a capability genuinely requires it.
 
-## Legacy prompts
-
-`prompts/` remains useful for clients that do not support Agent Skills. When editing a legacy prompt, keep it aligned with its corresponding skill and avoid turning it into a global always-loaded instruction set.

@@ -1,4 +1,4 @@
-# documentation-review-and-update.prompt.md
+# Documentation Review and Update — Detailed Checklist
 
 
 ## Context

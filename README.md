@@ -1,10 +1,10 @@
 # MERN AI Dev Toolkit
 
-A reusable Agent Skills, prompt, and standards toolkit for MERN projects.
+A reusable Agent Skills and standards toolkit for MERN projects.
 
 This repository provides:
 - Project standards for architecture, coding, style, and best practices.
-- Prompt templates for common engineering tasks (reviews, component building, documentation, explanation).
+- Reusable Agent Skills for common engineering tasks (reviews, component building, documentation, explanation).
 - A consistent workflow for using AI assistants with MERN codebases.
 
 The toolkit is intentionally project-agnostic so you can apply it to internal apps, SaaS products, dashboards, marketplaces, and client projects.
@@ -14,7 +14,6 @@ The toolkit is intentionally project-agnostic so you can apply it to internal ap
 
 The primary workflow is now `.agents/skills/`. Each engineering task is a discoverable Agent Skill with concise metadata and instructions. Detailed review criteria live in skill `references/` and are loaded only when needed; recursive audit skills also include deterministic inventory scripts. This implements progressive disclosure and avoids loading the entire standards library into every request. See `AGENT-SKILLS.md`.
 
-Use the legacy `prompts/` files only when your AI client does not support Agent Skills or when you intentionally want a copy/paste prompt.
 
 ## Who This Is For
 
@@ -22,7 +21,7 @@ Use this toolkit if you are:
 - Building or maintaining a MERN application.
 - Using an AI coding assistant and want consistent outputs.
 - Standardizing quality gates across backend, frontend, and styling.
-- Creating repeatable prompt workflows for code review and refactoring.
+- Creating repeatable Agent Skill workflows for code review and refactoring.
 
 ## Repository Structure
 
@@ -36,20 +35,23 @@ MERN-prompts/
   project-instructions.md
   style-guide.md
   README.md
+  AGENT-SKILLS.md
   .github/
     copilot-instructions.md
-  prompts/
-    api-controller-route-review.prompt.md
-    backend-review.prompt.md
-    build-component.prompt.md
-    business-logic-utility-review.prompt.md
-    code-review.prompt.md
-    documentation-review-and-update.prompt.md
-    explain-code.prompt.md
-    layout-ux-review.prompt.md
-    scss-review.prompt.md
-    test-coverage-audit-and-generation.prompt.md
-    typescript-best-practices-review.prompt.md
+  .agents/
+    skills/
+      mern-api-review/
+      mern-backend-review/
+      mern-business-logic-review/
+      mern-code-review/
+      mern-documentation/
+      mern-explain-code/
+      mern-layout-ux-review/
+      mern-react-component/
+      mern-react-review/
+      mern-scss-review/
+      mern-test-coverage/
+      mern-typescript-review/
 ```
 
 ## What Each Core File Does
@@ -78,35 +80,20 @@ Instruction entrypoint for assistants that support a Claude-style instruction fi
 ### `.github/copilot-instructions.md`
 Instruction entrypoint for GitHub Copilot Chat / coding workflows.
 
-## Prompt Templates (Task Catalog)
+## Agent Skill Catalog
 
-### Backend and API
-- `api-controller-route-review.prompt.md`
-  - Reviews Express routes/controllers/middleware and API design.
-- `backend-review.prompt.md`
-  - Runs a broad backend architecture and reliability audit.
-- `business-logic-utility-review.prompt.md`
-  - Focuses on utility modules, domain logic, and correctness.
-
-### Frontend and UX
-- `build-component.prompt.md`
-  - Builds or refactors reusable React components.
-- `layout-ux-review.prompt.md`
-  - Reviews layout quality, UX clarity, and responsiveness.
-- `scss-review.prompt.md`
-  - Reviews SCSS architecture, maintainability, and consistency.
-
-### General Engineering
-- `code-review.prompt.md`
-  - General full-stack code quality review.
-- `documentation-review-and-update.prompt.md`
-  - Audits docs and suggests high-value updates.
-- `explain-code.prompt.md`
-  - Explains selected code with maintainability guidance.
-- `test-coverage-audit-and-generation.prompt.md`
-  - Audits existing test coverage and proposes missing tests before generating them.
-- `typescript-best-practices-review.prompt.md`
-  - Recursively audits all handwritten TypeScript and TSX files, proposes idiomatic TypeScript refactors, and applies them only after approval.
+- `mern-api-review` — reviews Express routes, controllers, middleware, and API design.
+- `mern-backend-review` — broad backend architecture and reliability audit.
+- `mern-business-logic-review` — reviews utilities, domain logic, and correctness.
+- `mern-code-review` — general full-stack code quality review.
+- `mern-documentation` — audits and updates project documentation.
+- `mern-explain-code` — explains selected code with maintainability guidance.
+- `mern-layout-ux-review` — reviews layout quality, UX clarity, and responsiveness.
+- `mern-react-component` — builds or refactors reusable React components.
+- `mern-react-review` — reviews React architecture and implementation quality.
+- `mern-scss-review` — reviews SCSS architecture, maintainability, and consistency.
+- `mern-test-coverage` — audits test coverage and proposes or generates missing tests.
+- `mern-typescript-review` — audits TypeScript/TSX and proposes idiomatic refactors.
 
 ## How To Use This Toolkit
 
@@ -140,16 +127,16 @@ For GitHub Copilot workflows, ensure your project includes:
 For other assistants, point them to:
 - `@.ai/CLAUDE.md` (or equivalent instruction source)
 
-## 3. Use prompts with relevant code context
+## 3. Invoke skills with relevant code context
 
-When running a prompt:
+When using a skill:
 - Include the exact files/folders you want analyzed.
 - Include enough surrounding context for imported modules.
 - Keep scope explicit (for example: `server/routes`, `client/src/components/Header`).
 
 ## 4. Review and approve changes
 
-All implementation-capable prompts use a mandatory two-phase workflow:
+Implementation-capable skills use a mandatory two-phase workflow:
 
 1. **Phase 1 — Review and proposal**
    - The assistant inspects the requested scope.
@@ -161,55 +148,36 @@ All implementation-capable prompts use a mandatory two-phase workflow:
    - It runs relevant type-check, lint, test, and build commands when available.
    - It reports every changed file and the validation results.
 
-Prompt output should guide engineering decisions, not replace judgment. Review the proposed changes before approving them. Prioritize high-impact security and reliability fixes, keep architecture changes incremental, and validate behavior after implementation.
+Skill output should guide engineering decisions, not replace judgment. Review the proposed changes before approving them. Prioritize high-impact security and reliability fixes, keep architecture changes incremental, and validate behavior after implementation.
 
 ## Suggested Workflow
 
-1. Start with `code-review.prompt.md` or `backend-review.prompt.md` for a baseline Phase 1 review.
-2. Use specialized prompts for focused improvements:
-   - API and middleware -> `api-controller-route-review.prompt.md`
-   - Component work -> `build-component.prompt.md`
-   - Styling cleanup -> `scss-review.prompt.md`
-   - UX polish -> `layout-ux-review.prompt.md`
+1. Ask Copilot Agent to use `mern-code-review` or `mern-backend-review` for a baseline Phase 1 review.
+2. Use specialized skills for focused improvements:
+   - API and middleware -> `mern-api-review`
+   - Component work -> `mern-react-component`
+   - Styling cleanup -> `mern-scss-review`
+   - UX polish -> `mern-layout-ux-review`
 3. Review the proposed changes and explicitly approve only the changes you want applied.
-4. Run `documentation-review-and-update.prompt.md` before major merges or release prep.
-5. Use `explain-code.prompt.md` to onboard collaborators quickly.
+4. Use `mern-documentation` before major merges or release prep.
+5. Use `mern-explain-code` to understand unfamiliar code or onboard collaborators.
 
-## Example Prompt Requests
-
-Use these as quick copy templates in your AI chat tool.
-
-### Example: Backend route review
+## Example Requests
 
 ```text
-Use prompts/api-controller-route-review.prompt.md.
-Review server/routes and server/controllers only.
+Use the /mern-api-review skill to review server/routes and server/controllers only.
 Focus on authentication, validation, status codes, and middleware order.
 Return critical issues first with file-specific fixes.
 ```
 
-### Example: Build component
-
 ```text
-Use prompts/build-component.prompt.md.
-Create a reusable UserCard component from this existing JSX.
+Use the /mern-react-component skill to create a reusable UserCard component from this existing JSX.
 Target folder: client/src/components/cards.
-Include matching SCSS and a usage example.
+Include matching SCSS and a test file.
 ```
 
-### Example: Documentation audit
-
 ```text
-Use prompts/documentation-review-and-update.prompt.md.
-Review README, server README, and API docs.
-Propose only high-impact updates that reduce onboarding time.
-```
-
-### Example: Test coverage audit
-
-```text
-Use prompts/test-coverage-audit-and-generation.prompt.md.
-Audit test coverage for server/services and client/src/hooks.
+Use the /mern-test-coverage skill to audit server/services and client/src/hooks.
 Propose missing unit tests and flag untested edge cases. Do not generate files until I approve the proposal.
 ```
 
@@ -228,14 +196,14 @@ You can tailor the toolkit by editing:
 - `architecture.md` for your real folder structure and service boundaries.
 - `style-guide.md` for design-system tokens and conventions.
 - `coding-standards.md` for language and framework conventions specific to your stack.
-- Prompt templates to include project-specific checklists.
+- Skill references to include project-specific checklists.
 
 Keep customizations minimal and explicit to preserve portability.
 
 ## Maintenance Guidelines
 
-- Keep standards and prompts aligned when rules change.
-- Update prompt wording when stack choices evolve (for example, TypeScript adoption).
+- Keep standards and skills aligned when rules change.
+- Update skill metadata and references when stack choices evolve (for example, TypeScript adoption).
 - Remove outdated checks that no longer match your architecture.
 - Review documentation periodically to avoid drift.
 
