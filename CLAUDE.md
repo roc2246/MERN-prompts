@@ -1,17 +1,13 @@
 # Claude Project Instructions
 
-This project uses the `@.ai/` directory as the single source of truth for project documentation, architecture, coding standards, style guidelines, and prompts.
+Use `.agents/skills/` as the primary source for repeatable MERN workflows. Select the narrowest matching skill from its `name` and `description`, then load that skill's `SKILL.md` only when the task matches.
 
-Follow the documentation in:
+Keep global context lean:
 
-* @.ai/project-context.md
-* @.ai/project-instructions.md
-* @.ai/coding-standards.md
-* @.ai/style-guide.md
-* @.ai/mern-best-practices.md
+- Do not preload every project standard or every review checklist.
+- Load a skill's `references/project-standards.md` only when repository conventions affect the current task.
+- Load `references/detailed-checklist.md` only for deep or exhaustive audits.
+- Use bundled scripts for deterministic inventory or repeatable operations when the active skill provides them.
+- Inspect only the project files needed to answer or implement the user's request, expanding scope when imports, call sites, configuration, or runtime behavior require it.
 
-When making code changes:
-
-* Follow the documented standards and architecture.
-* Do not modify unrelated files unless explicitly requested.
-* Suggest a concise Git commit message after making code changes.
+When making code changes, preserve unrelated code, validate with the project's existing checks when available, and provide a concise Git commit message.

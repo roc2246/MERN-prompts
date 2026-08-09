@@ -21,9 +21,8 @@ This toolkit targets a generic full-stack MERN application with a React frontend
 - `routes/`: endpoint declarations and middleware composition.
 - `middleware/`: auth, validation, and cross-cutting concerns.
 - `controllers/`: HTTP request/response orchestration.
-- `services/`: domain business logic and database operations.
-- `models/`: Mongoose schemas and TypeScript document interfaces.
-- `utilities/`: shared helpers (error formatting, config, type guards, Mongoose cache).
+- `models/`: Mongoose schemas and data access logic.
+- `utilities/` or `services/`: shared helpers and domain logic.
 - `scripts/`: operational scripts (seeding, migrations, maintenance).
 
 ## Request Lifecycle

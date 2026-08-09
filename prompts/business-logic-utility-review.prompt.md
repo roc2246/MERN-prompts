@@ -1,104 +1,28 @@
-# Node.js/TypeScript Business Logic & Utility Review Prompt
+# business-logic-utility-review.prompt.md
 
-## Required Project Context
+## Preferred workflow
 
-IMPORTANT: This prompt requires the repository standards files. In this toolkit source repo they live at the repository root. In a consuming project they may live in the project's `.ai/` folder.
-
-Required files:
-- architecture.md
-- CLAUDE.md
-- coding-standards.md
-- mern-best-practices.md
-- project-context.md
-- project-instructions.md
-- style-guide.md
-
-AI VERIFICATION STEP: Before continuing, verify these files are present in context. Accept either repository-root copies or `.ai/` copies. If any are missing, identify the missing files and ask the user to provide them.
-
-## Universal Rules
-
-- Prioritize production readiness, maintainability, and MERN best practices.
-- Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
-- Be direct and practical.
-- Recommend the highest-impact improvement first.
-- Do not modify files unless explicitly asked.
-
-## Role
-
-You are a senior backend developer reviewing core business logic and utility functions in a MERN backend.
+If the client supports Agent Skills, use `.agents/skills/mern-business-logic-review/SKILL.md` instead of treating this file as a large standalone system prompt. The skill is the source of truth for this workflow.
 
 ## Task
 
-Review selected JavaScript/TypeScript Node utility files (for example validation, date helpers, calculations) or core business logic.
+Review the requested services, utilities, calculations, validators, or domain logic for correctness and maintainability.
 
-When the project uses TypeScript, prioritize auditing `.ts` source files over compiled `.js` files.
+## Context loading
 
-## Evaluate
+- Start with the files/folders named by the user.
+- Load only nearby code needed to understand imports, call sites, configuration, or behavior.
+- Load `.agents/skills/mern-business-logic-review/references/project-standards.md` only when repository conventions affect the task.
+- For a deep or exhaustive audit, load `.agents/skills/mern-business-logic-review/references/detailed-checklist.md`. Do not load the detailed checklist for a narrow question.
+- For recursive audits, use the skill's `scripts/inventory.py` when present so coverage is deterministic rather than inferred.
 
-- Error handling patterns
-- Asynchronous flow (Async/Await)
-- Input validation
-- Authorization logic
-- Timezone and UTC date consistency
-- Modularization
-- Separation of concerns
-- Naming conventions
-- Hardcoded values
-- Logic branching and edge cases
-- Security issues
-- Unnecessary complexity
-- Maintainability
-- Scalability
+## Working rules
 
-## Return Format
-
-### 1. Overall Backend Score
-
-Give a score from 1-10.
-
-### 2. What Is Good
-
-Identify strengths.
-
-### 3. Critical Issues
-
-Security, broken logic, or architectural flaws.
-
-### 4. Important Improvements
-
-Maintainability and code organization.
-
-### 5. Security and Error Handling
-
-Focus on authentication/authorization, input sanitization, and consistent API response behavior.
-
-### 6. Suggested Revised Code
-
-Provide revised code for the highest-impact fixes.
-
-### 7. Next Three Tasks
-
-Give the next three practical tasks in priority order.
----
-
-## Mandatory Approval Gate
-
-Use a two-phase workflow.
-
-### Phase 1: Review and proposal
-
-- Inspect the relevant files and present the findings, recommended changes, affected file paths, expected benefits, risks, and any concise example patches needed to explain the proposal.
-- Do not edit, create, delete, rename, or overwrite project files during Phase 1.
-- Do not run commands that mutate the project during Phase 1. Read-only inspection and validation commands are allowed.
-- Clearly distinguish required fixes from optional improvements.
-
-At the end of Phase 1, stop and ask exactly:
-
-**Would you like me to go forward and apply these changes?**
-
-Do not apply anything until the user explicitly approves.
-
-### Phase 2: Implementation after approval
-
-After the user approves, apply only the approved changes. Then run the relevant type-check, lint, tests, and build commands when available, fix problems caused by the edits, and report every file changed plus the validation results.
-
+- Base claims only on files actually inspected.
+- Do not claim complete-project coverage unless every inventoried in-scope file was reviewed.
+- Prefer small, high-confidence, production-relevant changes over broad rewrites.
+- Preserve runtime validation at untrusted boundaries even when TypeScript types exist.
+- Follow the repository approval workflow before editing when applicable.
+- After approved changes, run relevant existing checks when available and report changed files and validation results.
+- Put the highest-impact finding first and include exact file paths.
+- If code changes, provide a concise Git commit message.

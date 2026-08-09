@@ -1,6 +1,6 @@
 # MERN AI Dev Toolkit
 
-A reusable prompt-and-standards toolkit for any MERN project.
+A reusable Agent Skills, prompt, and standards toolkit for MERN projects.
 
 This repository provides:
 - Project standards for architecture, coding, style, and best practices.
@@ -8,6 +8,13 @@ This repository provides:
 - A consistent workflow for using AI assistants with MERN codebases.
 
 The toolkit is intentionally project-agnostic so you can apply it to internal apps, SaaS products, dashboards, marketplaces, and client projects.
+
+
+## Agent Skills (Recommended)
+
+The primary workflow is now `.agents/skills/`. Each engineering task is a discoverable Agent Skill with concise metadata and instructions. Detailed review criteria live in skill `references/` and are loaded only when needed; recursive audit skills also include deterministic inventory scripts. This implements progressive disclosure and avoids loading the entire standards library into every request. See `AGENT-SKILLS.md`.
+
+Use the legacy `prompts/` files only when your AI client does not support Agent Skills or when you intentionally want a copy/paste prompt.
 
 ## Who This Is For
 

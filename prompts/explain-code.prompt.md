@@ -1,67 +1,28 @@
-# Explain Code Prompt
+# explain-code.prompt.md
 
-## Required Project Context
+## Preferred workflow
 
-IMPORTANT: This prompt requires the repository standards files. In this toolkit source repo they live at the repository root. In a consuming project they may live in the project's `.ai/` folder.
-
-Required files:
-- architecture.md
-- CLAUDE.md
-- coding-standards.md
-- mern-best-practices.md
-- project-context.md
-- project-instructions.md
-- style-guide.md
-
-AI VERIFICATION STEP: Before continuing, verify these files are present in context. Accept either repository-root copies or `.ai/` copies. If any are missing, identify the missing files and ask the user to provide them.
-
-## Universal Rules
-
-- Prioritize maintainability, accessibility, responsive design, and MERN best practices.
-- Avoid overengineering, unnecessary frameworks, and huge rewrites unless there is a clear reason.
-- Be direct and practical.
-- Recommend the highest-impact improvement first.
-- Do not modify files unless explicitly asked.
-
-## Role
-
-You are an experienced Full-Stack developer teaching a developer how selected code functions within a MERN application.
+If the client supports Agent Skills, use `.agents/skills/mern-explain-code/SKILL.md` instead of treating this file as a large standalone system prompt. The skill is the source of truth for this workflow.
 
 ## Task
 
-Explain the selected code clearly and practically.
+Explain the requested MERN code clearly, including its responsibility, control/data flow, dependencies, and important maintainability considerations.
 
-Support JavaScript and TypeScript code, including React `.jsx` and `.tsx` files.
+## Context loading
 
-## Include
+- Start with the files/folders named by the user.
+- Load only nearby code needed to understand imports, call sites, configuration, or behavior.
+- Load `.agents/skills/mern-explain-code/references/project-standards.md` only when repository conventions affect the task.
+- For a deep or exhaustive audit, load `.agents/skills/mern-explain-code/references/detailed-checklist.md`. Do not load the detailed checklist for a narrow question.
+- For recursive audits, use the skill's `scripts/inventory.py` when present so coverage is deterministic rather than inferred.
 
-- What the code does
-- Why it works
-- Important functions, properties, hooks, or MERN concepts
-- How data flows through the code
-- Any security, accessibility, or maintainability issues
-- How it fits into the larger project
-- What to improve next, if anything
+## Working rules
 
-## Return Format
-
-### 1. Plain-English Summary
-
-### 2. Step-by-Step Explanation
-
-### 3. Important Concepts
-
-### 4. Potential Issues
-
-### 5. How This Fits the Project
-
-### 6. Best Next Improvement
----
-
-## Workflow
-
-- Inspect the relevant files and explain them directly.
-- Keep the task read-only unless the user explicitly asks for code changes.
-- If you spot improvements, label them as optional recommendations rather than switching into implementation mode.
-- Only propose an edit plan and request approval if the user later asks you to make code changes.
-
+- Base claims only on files actually inspected.
+- Do not claim complete-project coverage unless every inventoried in-scope file was reviewed.
+- Prefer small, high-confidence, production-relevant changes over broad rewrites.
+- Preserve runtime validation at untrusted boundaries even when TypeScript types exist.
+- Follow the repository approval workflow before editing when applicable.
+- After approved changes, run relevant existing checks when available and report changed files and validation results.
+- Put the highest-impact finding first and include exact file paths.
+- If code changes, provide a concise Git commit message.
