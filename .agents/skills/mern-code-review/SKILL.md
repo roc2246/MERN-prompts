@@ -1,6 +1,6 @@
 ---
 name: mern-code-review
-description: Review MERN JavaScript/TypeScript, React, Express, Mongoose, and styles for production-quality issues. Use for general code reviews, refactoring audits, maintainability checks, or when the user asks for a senior-engineer review.
+description: General code review for MERN JavaScript/TypeScript, React, Express, Mongoose, and styles. Use as the catch-all for code reviews when scope is unclear, for refactoring audits, maintainability checks, or when the user asks for a senior-engineer review. For focused backend architecture or dependency flow reviews, use mern-backend-review instead.
 metadata:
   author: riley-childs
   version: "1.0"

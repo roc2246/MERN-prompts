@@ -1,6 +1,6 @@
 ---
 name: mern-backend-review
-description: Audit a MERN Node/Express/Mongoose backend for architecture, security, reliability, API design, and maintainability. Use for backend-wide reviews or server architecture audits.
+description: Specialized backend architecture audit for a MERN Node/Express/Mongoose backend focusing on design patterns, security, reliability, API design, dependency flow, and database strategy. Use for backend-wide reviews, server architecture audits, or dependency/integration analysis. For general backend code review when architecture is not the focus, use mern-code-review instead.
 metadata:
   author: riley-childs
   version: "1.0"
