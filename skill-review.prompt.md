@@ -1,1 +1,0 @@
-Audit the Agent Skills in `.agents/skills/` for trigger clarity, overlap, token efficiency, and progressive disclosure. Keep `SKILL.md` to always-needed instructions; move optional detail to references; deduplicate shared rules; preserve task-specific expertise. Report proposed changes before making edits unless edits were explicitly requested.

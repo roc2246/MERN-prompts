@@ -1,13 +1,19 @@
 ---
 name: mern-api-review
-description: Review Express routes/controllers/middleware for HTTP semantics, validation, auth, authorization, error handling, and security. Use for endpoint, route, controller, middleware, or API-contract reviews.
+description: Review Express routes, controllers, middleware, validation, authentication, authorization, and HTTP behavior. Use for API endpoint, controller, route, or middleware review tasks.
 metadata:
   author: riley-childs
-  version: "2.0"
+  version: "1.0"
 ---
 
-# Instructions
+# Workflow
 
-Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
-Use `../_base/project-standards.md` only when repository conventions/defaults matter.
-For deep or exhaustive reviews, also load `references/detailed-checklist.md`.
+See `.agents/skills/_base/common-workflow.md`.
+
+# Output
+
+See `.agents/skills/_base/common-output.md`.
+
+# Deterministic Inventory
+
+For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.

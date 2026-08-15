@@ -1,13 +1,19 @@
 ---
 name: mern-code-review
-description: General senior-level MERN review for TypeScript/JavaScript, React, Express, Mongoose, and SCSS. Use for broad code review, refactoring, maintainability, or unclear scope. Prefer a focused skill when the request clearly matches one.
+description: General code review for MERN JavaScript/TypeScript, React, Express, Mongoose, and styles. Use as the catch-all for code reviews when scope is unclear, for refactoring audits, maintainability checks, or when the user asks for a senior-engineer review. For focused backend architecture or dependency flow reviews, use mern-backend-review instead.
 metadata:
   author: riley-childs
-  version: "2.0"
+  version: "1.0"
 ---
 
-# Instructions
+# Workflow
 
-Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
-Use `../_base/project-standards.md` only when repository conventions/defaults matter.
-For deep or exhaustive reviews, also load `references/detailed-checklist.md`.
+See `.agents/skills/_base/common-workflow.md`.
+
+# Output
+
+See `.agents/skills/_base/common-output.md`.
+
+# Deterministic Inventory
+
+For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.

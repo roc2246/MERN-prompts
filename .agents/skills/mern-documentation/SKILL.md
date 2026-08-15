@@ -1,13 +1,19 @@
 ---
 name: mern-documentation
-description: Audit or update MERN documentation for setup, architecture, scripts, APIs, environment variables, deployment, and maintenance. Use for README/docs accuracy or documentation-generation tasks.
+description: Audit and update MERN project documentation so architecture, setup, APIs, environment variables, and maintenance guidance stay accurate. Use for README or documentation review/update tasks.
 metadata:
   author: riley-childs
-  version: "2.0"
+  version: "1.0"
 ---
 
-# Instructions
+# Workflow
 
-Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
-Use `../_base/project-standards.md` only when repository conventions/defaults matter.
-For deep or exhaustive reviews, also load `references/detailed-checklist.md`.
+See `.agents/skills/_base/common-workflow.md`.
+
+# Output
+
+See `.agents/skills/_base/common-output.md`.
+
+# Deterministic Inventory
+
+For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.

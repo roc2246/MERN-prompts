@@ -1,13 +1,19 @@
 ---
 name: mern-react-review
-description: Audit React TypeScript/JavaScript for component boundaries, hooks, state, accessibility, rendering behavior, performance, and tests. Use for React/frontend code reviews.
+description: Audit React JavaScript/TypeScript code for component design, hooks, state, accessibility, performance, tests, and maintainability. Use for React best-practices or frontend code reviews.
 metadata:
   author: riley-childs
-  version: "2.0"
+  version: "1.0"
 ---
 
-# Instructions
+# Workflow
 
-Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
-Use `../_base/project-standards.md` only when repository conventions/defaults matter.
-For deep or exhaustive reviews, also load `references/detailed-checklist.md`.
+See `.agents/skills/_base/common-workflow.md`.
+
+# Output
+
+See `.agents/skills/_base/common-output.md`.
+
+# Deterministic inventory
+
+For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.
