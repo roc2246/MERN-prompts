@@ -28,7 +28,7 @@ Not every skill needs every folder. For example, `mern-explain-code` is intentio
 - Put instructions needed every run directly in `SKILL.md` rather than behind another shared reference.
 - Put optional/deep context under `references/`; split very large references by topic.
 - Put deterministic repeatable logic under `scripts/` when it improves reliability or token efficiency.
-- Keep skills self-contained enough to copy independently; avoid sibling `_base` dependencies.
+- Keep skill instructions self-contained enough to copy independently; shared repository tooling may live under `.agents/scripts/` when centralization prevents duplicated logic.
 - Do not add scripts/assets merely because another skill has them.
 - Keep global product-specific instruction files thin and route task-specific behavior to skills.
 

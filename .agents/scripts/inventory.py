@@ -1,18 +1,29 @@
 #!/usr/bin/env python3
 """Deterministically inventory handwritten source files for an Agent Skill audit."""
-from pathlib import Path
 import argparse
+from pathlib import Path
 
 DEFAULT_EXCLUDED = {
     "node_modules", "dist", "build", "coverage", ".next", ".turbo",
     ".cache", ".git", ".vite", "out",
 }
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
-    parser.add_argument("--ext", action="append", required=True, help="Extension such as .ts; repeatable")
-    parser.add_argument("--exclude", action="append", default=[], help="Directory name to exclude; repeatable")
+    parser.add_argument(
+        "--ext",
+        action="append",
+        required=True,
+        help="Extension such as .ts; repeatable",
+    )
+    parser.add_argument(
+        "--exclude",
+        action="append",
+        default=[],
+        help="Directory name to exclude; repeatable",
+    )
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
@@ -33,6 +44,7 @@ def main():
     for path in sorted(files):
         print(path.as_posix())
     print(f"TOTAL={len(files)}")
+
 
 if __name__ == "__main__":
     main()

@@ -22,7 +22,7 @@ Copy **only `.agents/`** into another repository to reuse the system.
 ## Design rules
 
 - `.agents/skills/` is the source of AI behavior.
-- Each skill is independently portable and loads references progressively.
+- Each skill keeps its instructions and references portable and loads them progressively. Shared deterministic tooling lives under `.agents/scripts/` to avoid duplicated implementations.
 - Domain knowledge belongs in skill references, not always-on platform prompts.
 - Deterministic tasks belong in scripts when scripts improve reliability or save context.
 - `.agents/docs/` is human-readable baseline guidance; it is not automatically loaded into every skill.

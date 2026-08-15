@@ -6,4 +6,4 @@ The runtime skill layout is:
 
 `.agents/skills/<skill-name>/SKILL.md`
 
-Each skill keeps its own `references/` and `scripts/` folders intact. Skills are self-contained and do not depend on shared runtime instruction files.
+Each skill keeps its own `references/` folder intact. Shared deterministic tooling belongs under `.agents/scripts/`; skills may invoke it without duplicating its implementation.

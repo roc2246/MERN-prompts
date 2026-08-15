@@ -17,7 +17,7 @@ Backend architecture, dependency flow, security, reliability, database strategy,
 1. Inspect only the files and nearby dependencies needed for the requested scope.
 2. Load `references/project-standards.md` only when repository conventions materially affect the task.
 3. Load the relevant files under `references/` for deep or exhaustive review; do not load every reference for narrow questions.
-4. For recursive/full-project audits, use `scripts/inventory.py` when present and pass only relevant extensions. Never claim complete coverage without deterministic inventory evidence.
+4. For recursive/full-project audits, use `.agents/scripts/inventory.py` and pass only relevant extensions. Never claim complete coverage without deterministic inventory evidence.
 5. Base findings only on inspected code. Follow imports/call sites when required to prove behavior or safely remove validation.
 6. Prefer small, high-confidence, production-relevant changes over broad rewrites or new abstractions.
 7. Keep runtime validation at untrusted boundaries such as HTTP input, environment variables, JSON, database data, local storage, files, forms, and third-party APIs.
