@@ -15,7 +15,7 @@ Copy **only `.agents/`** into another repository to reuse the system.
 │   └── github/
 │       └── copilot-instructions.md
 ├── AGENT-SKILLS.md         # Skill architecture/conventions
-├── project.gitignore       # Optional gitignore baseline for cloned projects
+├── .gitignore              # Ignore rules for the agent package
 └── README.md
 ```
 
