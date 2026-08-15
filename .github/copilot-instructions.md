@@ -1,13 +1,5 @@
-# Project Instructions
+# MERN AI Instructions
 
-This repository uses portable Agent Skills under `.agents/skills/` for task-specific MERN workflows.
+Use `.agents/skills/` for task-specific workflows. Match the narrowest skill by its `name`/`description`; load only that `SKILL.md`, then optional references only when it says they are needed. Do not preload all skills or standards.
 
-Use progressive disclosure:
-
-- Match the user's task to the narrowest relevant skill by `name` and `description`.
-- Load the matching `SKILL.md` when needed; do not preload every skill.
-- Load its bundled project standards only when repository conventions matter.
-- Load detailed checklists only for exhaustive reviews.
-- Prefer bundled scripts for deterministic inventory/repeatable operations.
-
-For code changes, avoid unrelated edits, follow the active skill's workflow, run relevant existing checks when available, and include a concise Git commit message.
+For implementation, preserve unrelated code, prefer minimal safe changes, run relevant existing checks, and report changed files/results.

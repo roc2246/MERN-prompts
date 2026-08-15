@@ -1,15 +1,13 @@
 ---
 name: mern-layout-ux-review
-description: Review a MERN frontend layout for responsive behavior, accessibility, usability, visual hierarchy, and production readiness. Use for layout, responsive design, or UX audits.
+description: Review React/MERN UI layout for responsiveness, accessibility, usability, hierarchy, interaction states, and production readiness. Use for layout, responsive-design, accessibility, or UX audits.
 metadata:
   author: riley-childs
-  version: "1.0"
+  version: "2.0"
 ---
 
-# Workflow
+# Instructions
 
-See `.agents/skills/_base/common-workflow.md`.
-
-# Output
-
-See `.agents/skills/_base/common-output.md`.
+Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
+Use `../_base/project-standards.md` only when repository conventions/defaults matter.
+For deep or exhaustive reviews, also load `references/detailed-checklist.md`.

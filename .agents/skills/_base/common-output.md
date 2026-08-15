@@ -1,9 +1,3 @@
-# Common Output Format
+# Shared Output
 
-This output format applies to all Agent Skills.
-
-- Put the highest-impact finding or action first.
-- Cite exact file paths and code areas.
-- Explain why each recommendation matters and its practical tradeoff.
-- Avoid repeating standards that do not affect the current task.
-- If implementation changes code, include a concise Git commit message.
+Lead with the highest-impact result. Cite file paths/code areas. Explain impact and the smallest practical fix; omit irrelevant standards. Separate required fixes from optional improvements. For code changes, include validation results and a concise commit message.

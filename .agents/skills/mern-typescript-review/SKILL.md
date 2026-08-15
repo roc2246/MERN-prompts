@@ -1,19 +1,13 @@
 ---
 name: mern-typescript-review
-description: Recursively audit handwritten TypeScript/TSX for type safety, idiomatic TypeScript, runtime-boundary validation, compiler configuration, and safe refactors. Use for TypeScript best-practices reviews.
+description: Audit handwritten TypeScript/TSX for type safety, inference, narrowing, generics, API design, compiler settings, runtime-boundary validation, and safe refactors. Use for TypeScript best-practice reviews.
 metadata:
   author: riley-childs
-  version: "1.0"
+  version: "2.0"
 ---
 
-# Workflow
+# Instructions
 
-See `.agents/skills/_base/common-workflow.md`.
-
-# Output
-
-See `.agents/skills/_base/common-output.md`.
-
-# Deterministic inventory
-
-For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.
+Follow `../_base/common-workflow.md` and `../_base/common-output.md`.
+Use `../_base/project-standards.md` only when repository conventions/defaults matter.
+For deep or exhaustive reviews, also load `references/detailed-checklist.md`.
