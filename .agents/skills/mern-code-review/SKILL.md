@@ -1,19 +1,32 @@
 ---
 name: mern-code-review
-description: General code review for MERN JavaScript/TypeScript, React, Express, Mongoose, and styles. Use as the catch-all for code reviews when scope is unclear, for refactoring audits, maintainability checks, or when the user asks for a senior-engineer review. For focused backend architecture or dependency flow reviews, use mern-backend-review instead.
+description: General code review for MERN JavaScript/TypeScript, React, Express, Mongoose, and styles. Use as the catch-all when no more specific review skill matches, or for broad maintainability/refactoring audits.
 metadata:
   author: riley-childs
-  version: "1.0"
+  version: "2.0"
 ---
 
-# Workflow
+# mern-code-review
 
-See `.agents/skills/_base/common-workflow.md`.
+## Focus
 
-# Output
+Correctness, maintainability, readability, security, duplication, testability, and practical refactoring opportunities.
 
-See `.agents/skills/_base/common-output.md`.
+## Workflow
 
-# Deterministic Inventory
+1. Inspect only the files and nearby dependencies needed for the requested scope.
+2. Load `references/project-standards.md` only when repository conventions materially affect the task.
+3. Load the relevant files under `references/` for deep or exhaustive review; do not load every reference for narrow questions.
+4. For recursive/full-project audits, use `scripts/inventory.py` when present and pass only relevant extensions. Never claim complete coverage without deterministic inventory evidence.
+5. Base findings only on inspected code. Follow imports/call sites when required to prove behavior or safely remove validation.
+6. Prefer small, high-confidence, production-relevant changes over broad rewrites or new abstractions.
+7. Keep runtime validation at untrusted boundaries such as HTTP input, environment variables, JSON, database data, local storage, files, forms, and third-party APIs.
+8. Reviews are read-only unless the user explicitly requests implementation. If implementation is requested, make the requested safe changes directly, run existing relevant checks when available, and report changed files plus validation results.
 
-For recursive/full-project audits, use `scripts/inventory.py` instead of relying on memory or a shallow directory listing. Pass only the extensions relevant to the task. This script provides a reproducible file list and total before review.
+## Output
+
+- Put the highest-impact finding or action first.
+- Cite exact file paths and code areas.
+- Explain why recommendations matter and note practical tradeoffs.
+- Avoid repeating standards that do not affect the task.
+- If code changes are made, include a concise Git commit message.
