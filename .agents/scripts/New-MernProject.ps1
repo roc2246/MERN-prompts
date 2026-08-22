@@ -60,7 +60,7 @@ Assert-Command "node"
 Assert-Command "npm"
 Assert-Command "git"
 
-$projectPath = (Get-Location).Path
+$projectPath = (Resolve-Path ..\..).Path; cd $projectPath
 $projectName = Split-Path $projectPath -Leaf
 
 if (Test-Path (Join-Path $projectPath "client")) {
